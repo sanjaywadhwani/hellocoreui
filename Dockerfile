@@ -9,5 +9,5 @@ COPY . /var/www
 WORKDIR /var/www/
 
 RUN pwd
-
+RUN ["chmod", "+x", "./entrypoint.sh"]
 ENTRYPOINT ["./entrypoint.sh"]
