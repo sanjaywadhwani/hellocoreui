@@ -4,4 +4,10 @@ FROM kyma/docker-nginx
 # Add src.
 COPY . /var/www
 
-CMD 'nginx'
+#RUN echo "$1" > /var/www/apiserver.txt
+
+WORKDIR /var/www/
+
+RUN pwd
+
+ENTRYPOINT ["./entrypoint.sh"]

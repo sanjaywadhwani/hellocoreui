@@ -70,37 +70,38 @@
 				this.value = placeholder;
 			}
 		});
-		
-		$("#signup").click(function(){
-			$.ajax({
-				beforeSend: function(xhrObj){
-					xhrObj.setRequestHeader("Content-Type","application/json");
-					xhrObj.setRequestHeader("Accept","application/json");
-				},
-				type: "POST",
-				url: "http://localhost:5000/api/signup",       
-				data: JSON.stringify({email: $("#email").val()}),               
-				dataType: "json",
-				success: function(response){
-										
-				}		
-			})
-			.done(function(response) {
-				$( "#message" ).show();
-				console.log(response);
-				$("#message").html(response.message);
-			})
-			.fail(function(err) {
-				$( "#message" ).show();
-				console.log(err);
-				$("#message").html(JSON.stringify(err));
-			})
-			.always(function() {
-				//alert( "complete" );
-				$("#message").fadeOut(4000);
-				$("#email").val(placeholder);
+		$.get('apiserver.txt', function(appip) {
+			$("#signup").click(function(){
+				$.ajax({
+					beforeSend: function(xhrObj){
+						xhrObj.setRequestHeader("Content-Type","application/json");
+						xhrObj.setRequestHeader("Accept","application/json");
+					},
+					type: "POST",
+					url: appip+"/api/signup",       
+					data: JSON.stringify({email: $("#email").val()}),               
+					dataType: "json",
+					success: function(response){
+											
+					}		
+				})
+				.done(function(response) {
+					$( "#message" ).show();
+					console.log(response);
+					$("#message").html(response.message);
+				})
+				.fail(function(err) {
+					$( "#message" ).show();
+					console.log(err);
+					$("#message").html(JSON.stringify(err));
+				})
+				.always(function() {
+					//alert( "complete" );
+					$("#message").fadeOut(4000);
+					$("#email").val(placeholder);
+				});
 			});
-		});
+		},'text');		
 	</script>
 
 </body>
