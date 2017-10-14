@@ -10,5 +10,5 @@ WORKDIR /var/www/
 
 RUN pwd
 RUN ["chmod", "+x", "./entrypoint.sh"]
-USER hellocoreui-user
+#USER hellocoreui-user
 ENTRYPOINT ["./entrypoint.sh"]
