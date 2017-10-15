@@ -1,0 +1,19 @@
+sudo: required
+language: bash
+services: docker
+dist: trusty
+
+branches: 
+  only: 
+    - master
+
+script: 
+    - export REPO=sanjaywadhwani/hellocoreui
+    - docker build -t $REPO:$TRAVIS_COMMIT .
+    
+after_success:
+  - docker login -e $DOCKER_EMAIL -p $DOCKER_PASS
+  - export REPO=sanjaywadhwani/hellocoreui
+  - docker tag $REPO:$TRAVIS_COMMIT $REPO:$TRAVIS_BRANCH
+  - docker tag $REPO:$TRAVIS_COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
