@@ -1,0 +1,24 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hellocoreui",
+    "namespace": "default",
+    "labels": {
+      "run": "hellocoreui"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "protocol": "TCP",
+        "port": 80,
+        "targetPort": 80
+      }
+    ],
+    "selector": {
+      "run": "hellocoreui"
+    },
+    "type": "LoadBalancer"
+  }
+}

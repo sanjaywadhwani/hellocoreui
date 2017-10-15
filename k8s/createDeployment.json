@@ -1,0 +1,41 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "name": "hellocoreui",
+    "namespace": "default",
+    "labels": {
+      "run": "hellocoreui"
+    }
+  },
+  "spec": {
+    "replicas": 3,
+    "selector": {
+      "matchLabels": {
+        "run": "hellocoreui"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "run": "hellocoreui"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "hellocoreui",
+            "image": "sanjaywadhwani/hellocoreui",
+            "ports": [
+              {
+                "containerPort": 80,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {}
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "Namespace",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hellocore-dev",
+    "labels": {
+      "name": "hellocore-dev"
+    }
+  }
+}
